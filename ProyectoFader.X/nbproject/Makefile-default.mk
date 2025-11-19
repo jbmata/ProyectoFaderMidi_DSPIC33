@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=config.c main.c pwmled.c uart.c ad.c
+SOURCEFILES_QUOTED_IF_SPACED=config.c main.c pwmled.c uart.c ad.c pwmMotor.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/config.o ${OBJECTDIR}/main.o ${OBJECTDIR}/pwmled.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/ad.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/config.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/pwmled.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/ad.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/config.o ${OBJECTDIR}/main.o ${OBJECTDIR}/pwmled.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/ad.o ${OBJECTDIR}/pwmMotor.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/config.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/pwmled.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/ad.o.d ${OBJECTDIR}/pwmMotor.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/config.o ${OBJECTDIR}/main.o ${OBJECTDIR}/pwmled.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/ad.o
+OBJECTFILES=${OBJECTDIR}/config.o ${OBJECTDIR}/main.o ${OBJECTDIR}/pwmled.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/ad.o ${OBJECTDIR}/pwmMotor.o
 
 # Source Files
-SOURCEFILES=config.c main.c pwmled.c uart.c ad.c
+SOURCEFILES=config.c main.c pwmled.c uart.c ad.c pwmMotor.c
 
 
 
@@ -119,6 +119,12 @@ ${OBJECTDIR}/ad.o: ad.c  .generated_files/flags/default/60fb58d7c6b7c89c7f531449
 	@${RM} ${OBJECTDIR}/ad.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ad.c  -o ${OBJECTDIR}/ad.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ad.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
 	
+${OBJECTDIR}/pwmMotor.o: pwmMotor.c  .generated_files/flags/default/aa1ca75313e80d208bc476f544e340288efae8cf .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwmMotor.o.d 
+	@${RM} ${OBJECTDIR}/pwmMotor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  pwmMotor.c  -o ${OBJECTDIR}/pwmMotor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/pwmMotor.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	
 else
 ${OBJECTDIR}/config.o: config.c  .generated_files/flags/default/17ba0d7ff1a6b325f7957a9dc39d93407c146194 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -149,6 +155,12 @@ ${OBJECTDIR}/ad.o: ad.c  .generated_files/flags/default/606e42679d73f632d2fefbae
 	@${RM} ${OBJECTDIR}/ad.o.d 
 	@${RM} ${OBJECTDIR}/ad.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ad.c  -o ${OBJECTDIR}/ad.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/ad.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
+	
+${OBJECTDIR}/pwmMotor.o: pwmMotor.c  .generated_files/flags/default/1f335ac1ada81cc375ea82edc27272b40b12a123 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwmMotor.o.d 
+	@${RM} ${OBJECTDIR}/pwmMotor.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  pwmMotor.c  -o ${OBJECTDIR}/pwmMotor.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/pwmMotor.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off   
 	
 endif
 

@@ -8,6 +8,7 @@
       <itemPath>pwmled.h</itemPath>
       <itemPath>uart.h</itemPath>
       <itemPath>ad.h</itemPath>
+      <itemPath>pwmMotor.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -26,6 +27,7 @@
       <itemPath>pwmled.c</itemPath>
       <itemPath>uart.c</itemPath>
       <itemPath>ad.c</itemPath>
+      <itemPath>pwmMotor.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

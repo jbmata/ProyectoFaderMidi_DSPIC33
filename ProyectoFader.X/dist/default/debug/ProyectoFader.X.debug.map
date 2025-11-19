@@ -4,11 +4,11 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00013188.00 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00013188.01 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00013188.02 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00013188.03 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00013188.04 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000068d4.00 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000068d4.01 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000068d4.02 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000068d4.03 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000068d4.04 \
   -p33FJ32MC202 \
   -o \
   dist/default/debug/ProyectoFader.X.debug.elf \
@@ -26,6 +26,7 @@ Command:
   build/default/debug/pwmled.o \
   build/default/debug/uart.o \
   build/default/debug/ad.o \
+  build/default/debug/pwmMotor.o \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
   --defsym=__DEBUG=1 \
@@ -91,11 +92,12 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200               0x140           0x1e0  (480)
-.text                        0x340               0x22a           0x33f  (831)
-.dinit                       0x56a                0x24            0x36  (54)
+.text                        0x200               0x188           0x24c  (588)
+.text                        0x388               0x236           0x351  (849)
+.dinit                       0x5be                0x2a            0x3f  (63)
+.text                        0x5e8                0x28            0x3c  (60)
 
-                 Total "program" memory used (bytes):          0x555  (1365) 4%
+                 Total "program" memory used (bytes):          0x618  (1560) 4%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
@@ -107,9 +109,10 @@ reserve_data_0x820           0x820                 0x2             0x2  (2)
 reserve_data_0x822           0x822                 0x2             0x2  (2)
 reserve_data_0x824           0x824                 0x2             0x2  (2)
 reserve_data_0x826           0x826                0x2a            0x2a  (42)
-.nbss                        0x850                   0           0x19e  (414)
-.ndata                       0x9ee                   0             0x4  (4)
-.nbss                        0x9f2                   0             0x4  (4)
+.nbss                        0x850                   0           0x1a0  (416)
+.ndata                       0x9f0                   0             0x2  (2)
+.nbss                        0x9f2                   0             0x2  (2)
+.ndata                       0x9f4                   0             0x2  (2)
 
                  Total "data" memory used (bytes):          0x1f6  (502) 24%
 
@@ -128,23 +131,23 @@ Info: Project is using a large data memory model when small data memory model is
 
 External Symbols in Data Memory (by address):
 
-                    0x09e8                  _cont
-                    0x09ea                  _DC
-                    0x09ec                  _flag
-                    0x09ee                  _Periodo
-                    0x09f0                  _LED
-                    0x09f2                  _AnchoPulso
-                    0x09f4                  _medida_adc
+                    0x09e8                  _flag
+                    0x09ea                  _flag1
+                    0x09ec                  _cont1
+                    0x09ee                  _DC
+                    0x09f0                  _AnchoPulso
+                    0x09f2                  _medida_adc
+                    0x09f4                  _Periodo
 
 External Symbols in Data Memory (by name):
 
-                    0x09f2                  _AnchoPulso
-                    0x09ea                  _DC
-                    0x09f0                  _LED
-                    0x09ee                  _Periodo
-                    0x09e8                  _cont
-                    0x09ec                  _flag
-                    0x09f4                  _medida_adc
+                    0x09f0                  _AnchoPulso
+                    0x09ee                  _DC
+                    0x09f4                  _Periodo
+                    0x09ec                  _cont1
+                    0x09e8                  _flag
+                    0x09ea                  _flag1
+                    0x09f2                  _medida_adc
 
 External Symbols in Program Memory (by address):
 
@@ -156,51 +159,57 @@ External Symbols in Program Memory (by address):
                   0x0002d8                  __U1TXInterrupt
                   0x000302                  __U1RXInterrupt
                   0x000324                  __ADC1Interrupt
-                  0x00033a                  __DefaultInterrupt
-                  0x000340                  _InicializarUART
-                  0x00038c                  _PonerEnColaTransmisionUART
-                  0x0003ae                  _SacarDeColaTransmisionUART
-                  0x0003d0                  _PonerEnColaRecepcionUART
-                  0x0003f2                  _SacarDeColaRecepcionUART
-                  0x000414                  _Transmite
-                  0x00041c                  _HayAlgoRecibido
-                  0x000430                  _InicializarReloj
-                  0x000484                  _RemapeaPerifericos
-                  0x0004c2                  _init_ad
-                  0x0004fc                  _get_ad
-                  0x000504                  _main
-                  0x00053a                  _init_pwm
-                  0x000562                  _reciboint
+                  0x00033a                  __T2Interrupt
+                  0x000382                  __DefaultInterrupt
+                  0x000388                  _InicializarUART
+                  0x0003d4                  _PonerEnColaTransmisionUART
+                  0x0003f6                  _SacarDeColaTransmisionUART
+                  0x000418                  _PonerEnColaRecepcionUART
+                  0x00043a                  _SacarDeColaRecepcionUART
+                  0x00045c                  _Transmite
+                  0x000464                  _HayAlgoRecibido
+                  0x000478                  _InicializarReloj
+                  0x0004cc                  _RemapeaPerifericos
+                  0x00050a                  _init_ad
+                  0x000544                  _get_ad
+                  0x00054c                  _main
+                  0x000588                  _init_pwm
+                  0x0005b0                  _muestreo
+                  0x0005e8                  _init_pwmMotor
+                  0x000604                  _setPwmMotor
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x00041c                  _HayAlgoRecibido
-                  0x000430                  _InicializarReloj
-                  0x000340                  _InicializarUART
-                  0x0003d0                  _PonerEnColaRecepcionUART
-                  0x00038c                  _PonerEnColaTransmisionUART
-                  0x000484                  _RemapeaPerifericos
-                  0x0003f2                  _SacarDeColaRecepcionUART
-                  0x0003ae                  _SacarDeColaTransmisionUART
-                  0x000414                  _Transmite
+                  0x000464                  _HayAlgoRecibido
+                  0x000478                  _InicializarReloj
+                  0x000388                  _InicializarUART
+                  0x000418                  _PonerEnColaRecepcionUART
+                  0x0003d4                  _PonerEnColaTransmisionUART
+                  0x0004cc                  _RemapeaPerifericos
+                  0x00043a                  _SacarDeColaRecepcionUART
+                  0x0003f6                  _SacarDeColaTransmisionUART
+                  0x00045c                  _Transmite
                   0x000324                  __ADC1Interrupt
-                  0x00033a                  __DefaultInterrupt
+                  0x000382                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
                   0x0002c8                  __T1Interrupt
+                  0x00033a                  __T2Interrupt
                   0x000302                  __U1RXInterrupt
                   0x0002d8                  __U1TXInterrupt
                   0x000252                  __data_init
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x0004fc                  _get_ad
-                  0x0004c2                  _init_ad
-                  0x00053a                  _init_pwm
-                  0x000504                  _main
-                  0x000562                  _reciboint
+                  0x000544                  _get_ad
+                  0x00050a                  _init_ad
+                  0x000588                  _init_pwm
+                  0x0005e8                  _init_pwmMotor
+                  0x00054c                  _main
+                  0x0005b0                  _muestreo
+                  0x000604                  _setPwmMotor
 
 Memory Configuration
 
@@ -256,6 +265,7 @@ LOAD build/default/debug/main.o
 LOAD build/default/debug/pwmled.o
 LOAD build/default/debug/uart.o
 LOAD build/default/debug/ad.o
+LOAD build/default/debug/pwmMotor.o
                     0x0001                  __MPLAB_BUILD = 0x1
                     0x0001                  __MPLAB_DEBUG = 0x1
                     0x0001                  __DEBUG = 0x1
@@ -289,7 +299,7 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200        0x140
+.text             0x000200        0x188
  *(.init)
  .init            0x000200         0x4c c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
                   0x000200                  __resetPRI
@@ -308,28 +318,30 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libfx-elf.a
                   0x000302                  __U1RXInterrupt
  .isr.text        0x000324         0x16 build/default/debug/ad.o
                   0x000324                  __ADC1Interrupt
- .isr             0x00033a          0x4 default_isr
-                  0x00033a                  __DefaultInterrupt
+ .isr.text        0x00033a         0x48 build/default/debug/pwmMotor.o
+                  0x00033a                  __T2Interrupt
+ .isr             0x000382          0x4 default_isr
+                  0x000382                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x00033e          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
-                  0x00033e                  __crt_start_mode
-                  0x00033e                  __crt_start_mode_normal
+                  0x000386          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt_start_mode_normal.Meo)
+                  0x000386                  __crt_start_mode
+                  0x000386                  __crt_start_mode_normal
 
 usercode
  *(usercode)
 
 __FBS             0xf80000          0x2
  *(__FBS.sec*)
- __FBS.sec        0xf80000          0x2 /CW/_FBSêÒ
+ __FBS.sec        0xf80000          0x2 /CW/_FBS0Âà
                   0xf80000                  __FBS.sec
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGSà¹Ò
+ __FGS.sec        0xf80004          0x2 /CW/_FGS ²à
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -362,45 +374,50 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x247c
+.debug_info       0x000000       0x2970
  *(.debug_info)
  .debug_info      0x000000        0x87b build/default/debug/config.o
- .debug_info      0x00087b        0x23d build/default/debug/main.o
- .debug_info      0x000ab8        0x44e build/default/debug/pwmled.o
- .debug_info      0x000f06        0xd53 build/default/debug/uart.o
- .debug_info      0x001c59        0x823 build/default/debug/ad.o
+ .debug_info      0x00087b        0x1e7 build/default/debug/main.o
+ .debug_info      0x000a62        0x424 build/default/debug/pwmled.o
+ .debug_info      0x000e86        0xd53 build/default/debug/uart.o
+ .debug_info      0x001bd9        0x823 build/default/debug/ad.o
+ .debug_info      0x0023fc        0x574 build/default/debug/pwmMotor.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x4dd
+.debug_abbrev     0x000000        0x5a1
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xc5 build/default/debug/config.o
- .debug_abbrev    0x0000c5         0xaf build/default/debug/main.o
- .debug_abbrev    0x000174         0xe5 build/default/debug/pwmled.o
- .debug_abbrev    0x000259        0x162 build/default/debug/uart.o
- .debug_abbrev    0x0003bb        0x122 build/default/debug/ad.o
+ .debug_abbrev    0x0000c5         0x7d build/default/debug/main.o
+ .debug_abbrev    0x000142         0xe5 build/default/debug/pwmled.o
+ .debug_abbrev    0x000227        0x162 build/default/debug/uart.o
+ .debug_abbrev    0x000389        0x122 build/default/debug/ad.o
+ .debug_abbrev    0x0004ab         0xf6 build/default/debug/pwmMotor.o
 
-.debug_line       0x000000        0x4f9
+.debug_line       0x000000        0x5ff
  *(.debug_line)
  .debug_line      0x000000         0xf1 build/default/debug/config.o
- .debug_line      0x0000f1         0xed build/default/debug/main.o
- .debug_line      0x0001de         0xfa build/default/debug/pwmled.o
- .debug_line      0x0002d8        0x125 build/default/debug/uart.o
- .debug_line      0x0003fd         0xfc build/default/debug/ad.o
+ .debug_line      0x0000f1         0xee build/default/debug/main.o
+ .debug_line      0x0001df         0xfc build/default/debug/pwmled.o
+ .debug_line      0x0002db        0x125 build/default/debug/uart.o
+ .debug_line      0x000400         0xfc build/default/debug/ad.o
+ .debug_line      0x0004fc        0x103 build/default/debug/pwmMotor.o
 
-.debug_frame      0x000000        0x294
+.debug_frame      0x000000        0x300
  *(.debug_frame)
  .debug_frame     0x000000         0x48 build/default/debug/config.o
  .debug_frame     0x000048         0x2e build/default/debug/main.o
  .debug_frame     0x000076         0x6c build/default/debug/pwmled.o
  .debug_frame     0x0000e2        0x146 build/default/debug/uart.o
  .debug_frame     0x000228         0x6c build/default/debug/ad.o
+ .debug_frame     0x000294         0x6c build/default/debug/pwmMotor.o
 
-.debug_str        0x000000         0xbe
+.debug_str        0x000000         0xd0
  *(.debug_str)
  .debug_str       0x000000         0x2c build/default/debug/config.o
  .debug_str       0x00002c          0x9 build/default/debug/pwmled.o
  .debug_str       0x000035         0x45 build/default/debug/uart.o
  .debug_str       0x00007a         0x44 build/default/debug/ad.o
+ .debug_str       0x0000be         0x12 build/default/debug/pwmMotor.o
 
 .debug_loc
  *(.debug_loc)
@@ -409,23 +426,25 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x204
+                  0x000000        0x24b
  *(.debug_pubnames)
  .debug_pubnames
                   0x000000         0x3e build/default/debug/config.o
  .debug_pubnames
                   0x00003e         0x2a build/default/debug/main.o
  .debug_pubnames
-                  0x000068         0x6b build/default/debug/pwmled.o
+                  0x000068         0x50 build/default/debug/pwmled.o
  .debug_pubnames
-                  0x0000d3         0xe6 build/default/debug/uart.o
+                  0x0000b8         0xe6 build/default/debug/uart.o
  .debug_pubnames
-                  0x0001b9         0x4b build/default/debug/ad.o
+                  0x00019e         0x4b build/default/debug/ad.o
+ .debug_pubnames
+                  0x0001e9         0x62 build/default/debug/pwmMotor.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x78
+.debug_aranges    0x000000         0x90
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/debug/config.o
@@ -437,6 +456,8 @@ __FUID3
                   0x000048         0x18 build/default/debug/uart.o
  .debug_aranges
                   0x000060         0x18 build/default/debug/ad.o
+ .debug_aranges
+                  0x000078         0x18 build/default/debug/pwmMotor.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1071,58 +1092,65 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
 END GROUP
 OUTPUT(dist/default/debug/ProyectoFader.X.debug.elf elf32-pic30)
-LOAD /CW/_FGSà¹Ò
-LOAD /CW/_FBSêÒ
+LOAD /CW/_FGS ²à
+LOAD /CW/_FBS0Âà
 LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000078        0x26a
+                  0x000090        0x2c3
  .debug_pubtypes
-                  0x000078         0xa3 build/default/debug/config.o
+                  0x000090         0xa3 build/default/debug/config.o
  .debug_pubtypes
-                  0x00011b         0x1f build/default/debug/main.o
+                  0x000133         0x1f build/default/debug/main.o
  .debug_pubtypes
-                  0x00013a         0x3c build/default/debug/pwmled.o
+                  0x000152         0x3c build/default/debug/pwmled.o
  .debug_pubtypes
-                  0x000176         0xd3 build/default/debug/uart.o
+                  0x00018e         0xd3 build/default/debug/uart.o
  .debug_pubtypes
-                  0x000249         0x99 build/default/debug/ad.o
+                  0x000261         0x99 build/default/debug/ad.o
+ .debug_pubtypes
+                  0x0002fa         0x59 build/default/debug/pwmMotor.o
 
 __c30_signature
-                  0x0002e2         0x2a
+                  0x000353         0x30
  __c30_signature
-                  0x0002e2          0x6 build/default/debug/config.o
+                  0x000353          0x6 build/default/debug/config.o
  __c30_signature
-                  0x0002e8          0x6 build/default/debug/main.o
+                  0x000359          0x6 build/default/debug/main.o
  __c30_signature
-                  0x0002ee          0x6 build/default/debug/pwmled.o
+                  0x00035f          0x6 build/default/debug/pwmled.o
  __c30_signature
-                  0x0002f4          0x6 build/default/debug/uart.o
+                  0x000365          0x6 build/default/debug/uart.o
  __c30_signature
-                  0x0002fa          0x6 build/default/debug/ad.o
+                  0x00036b          0x6 build/default/debug/ad.o
  __c30_signature
-                  0x000300          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
+                  0x000371          0x6 build/default/debug/pwmMotor.o
  __c30_signature
-                  0x000306          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
+                  0x000377          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(crt0_standard.o)
+ __c30_signature
+                  0x00037d          0x6 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-pic30-elf.a(data_init_standard.o)
 
-.nbss               0x0850        0x19e
+.nbss               0x0850        0x1a0
  .nbss              0x0850        0x198 build/default/debug/uart.o
- .nbss              0x09e8          0x6 build/default/debug/pwmled.o
-                    0x09e8                  _cont
-                    0x09ea                  _DC
-                    0x09ec                  _flag
+ .nbss              0x09e8          0x4 build/default/debug/pwmled.o
+                    0x09e8                  _flag
+                    0x09ea                  _flag1
+ .nbss              0x09ec          0x4 build/default/debug/pwmMotor.o
+                    0x09ec                  _cont1
+                    0x09ee                  _DC
 
-.ndata              0x09ee          0x4
- .ndata             0x09ee          0x4 build/default/debug/pwmled.o
-                    0x09ee                  _Periodo
-                    0x09f0                  _LED
+.ndata              0x09f0          0x2
+ .ndata             0x09f0          0x2 build/default/debug/main.o
+                    0x09f0                  _AnchoPulso
 
-.nbss               0x09f2          0x4
- .nbss              0x09f2          0x2 build/default/debug/main.o
-                    0x09f2                  _AnchoPulso
- .nbss              0x09f4          0x2 build/default/debug/ad.o
-                    0x09f4                  _medida_adc
+.nbss               0x09f2          0x2
+ .nbss              0x09f2          0x2 build/default/debug/ad.o
+                    0x09f2                  _medida_adc
+
+.ndata              0x09f4          0x2
+ .ndata             0x09f4          0x2 build/default/debug/pwmMotor.o
+                    0x09f4                  _Periodo
 
 .config_JTAGEN    0xf8000e          0x2
  .config_JTAGEN
@@ -1162,26 +1190,36 @@ __c30_signature
  .ivt._ADC1Interrupt
                   0x00002e          0x2 build/default/debug/ad.o
 
-.text             0x000340        0x22a
- .text            0x000340         0xf0 build/default/debug/uart.o
-                  0x000340                  _InicializarUART
-                  0x00038c                  _PonerEnColaTransmisionUART
-                  0x0003ae                  _SacarDeColaTransmisionUART
-                  0x0003d0                  _PonerEnColaRecepcionUART
-                  0x0003f2                  _SacarDeColaRecepcionUART
-                  0x000414                  _Transmite
-                  0x00041c                  _HayAlgoRecibido
- .text            0x000430         0x92 build/default/debug/config.o
-                  0x000430                  _InicializarReloj
-                  0x000484                  _RemapeaPerifericos
- .text            0x0004c2         0x42 build/default/debug/ad.o
-                  0x0004c2                  _init_ad
-                  0x0004fc                  _get_ad
- .text            0x000504         0x36 build/default/debug/main.o
-                  0x000504                  _main
- .text            0x00053a         0x30 build/default/debug/pwmled.o
-                  0x00053a                  _init_pwm
-                  0x000562                  _reciboint
+.ivt._T2Interrupt
+                  0x000022          0x2
+ .ivt._T2Interrupt
+                  0x000022          0x2 build/default/debug/pwmMotor.o
 
-.dinit            0x00056a         0x24
- .dinit           0x00056a         0x24 data_init
+.text             0x000388        0x236
+ .text            0x000388         0xf0 build/default/debug/uart.o
+                  0x000388                  _InicializarUART
+                  0x0003d4                  _PonerEnColaTransmisionUART
+                  0x0003f6                  _SacarDeColaTransmisionUART
+                  0x000418                  _PonerEnColaRecepcionUART
+                  0x00043a                  _SacarDeColaRecepcionUART
+                  0x00045c                  _Transmite
+                  0x000464                  _HayAlgoRecibido
+ .text            0x000478         0x92 build/default/debug/config.o
+                  0x000478                  _InicializarReloj
+                  0x0004cc                  _RemapeaPerifericos
+ .text            0x00050a         0x42 build/default/debug/ad.o
+                  0x00050a                  _init_ad
+                  0x000544                  _get_ad
+ .text            0x00054c         0x3c build/default/debug/main.o
+                  0x00054c                  _main
+ .text            0x000588         0x36 build/default/debug/pwmled.o
+                  0x000588                  _init_pwm
+                  0x0005b0                  _muestreo
+
+.dinit            0x0005be         0x2a
+ .dinit           0x0005be         0x2a data_init
+
+.text             0x0005e8         0x28
+ .text            0x0005e8         0x28 build/default/debug/pwmMotor.o
+                  0x0005e8                  _init_pwmMotor
+                  0x000604                  _setPwmMotor

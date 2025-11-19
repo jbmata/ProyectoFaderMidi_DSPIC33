@@ -14,7 +14,7 @@ extern "C" {
 
 void init_pwm();
 void ModificaAncho (int AnchoPulso);
-
+int muestreo();
 
 #ifdef	__cplusplus
 }

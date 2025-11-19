@@ -1,8 +1,7 @@
 #include "config.h"
 #include "pwmled.h"
 
-int cont=0, DC, Periodo=10, LED=12;
-int flag;
+int flag,flag1;
 
 void init_pwm(){
     PORTB=0XEFFF;
@@ -20,11 +19,10 @@ void __attribute__((interrupt,no_auto_psv)) _T1Interrupt(void){
     flag=1;
       
 }
-/*
-int ModificaAncho (int AnchoPulso){
-    DC=AnchoPulso;
-}*/
-int reciboint(){
-    return flag;
+
+int muestreo(){
+    flag1=flag;
     flag=0;
+    return flag1;
+   
 }
