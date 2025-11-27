@@ -47,9 +47,3 @@ El dsPIC envía bytes con este formato:
 
 Funciona igual, sustituyendo loopMIDI por ALSA o IAC Driver.
 
-
-
-
-
-
-Solo pídemelo.
