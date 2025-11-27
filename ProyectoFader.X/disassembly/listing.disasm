@@ -1,0 +1,334 @@
+Disassembly Listing for P4
+Generated From:
+D:/MicroJaviJuan/P4/P4.X/dist/default/debug/P4.X.debug.elf
+30-sep-2025 10:13:06
+
+---  D:/MicroJaviJuan/P4/P4.X/func.s  -------------------------------------------------------------------
+                                                  1:     /*
+                                                  2:     .text
+                                                  3:     .global _func
+                                                  4:     _func:
+                                                  5:     ; aquí se pone el código
+                                                  6:     ; la funcion recibe parametros AN y D n=(AN-1)/D +1 suma= n(1+AN)/2
+                                                  7:         
+                                                  8:     	;MOV w0,REGAN
+                                                  9:     	;MOV w1, REGD
+                                                  10:    	SUB #0x0001, w0
+                                                  11:    	;nota: w1/w0
+                                                  12:    	MOV w0,w2
+                                                  13:    	MOV w1, w3
+                                                  14:    	REPEAT #17
+                                                  15:    	DIV.U w2,w3 ;w0 almacena el cociente de la divison y w1 el resto
+                                                  16:    	ADD #0x0001, w0 ;wo posee n
+                                                  17:    	
+                                                  18:    	ADD #0x0001, w1
+                                                  19:    	MUL.UU w1,w0,w6
+                                                  20:    	
+                                                  21:    	MOV w0,w3
+                                                  22:    	MOV #0x0002,w4
+                                                  23:    	REPEAT #17
+                                                  24:    	DIV.U w5, w4 ;w0 almacena el cociente de la divison y w1 el resto
+                                                  25:    	;suma w0 tiene el resultado de la suma
+                                                  26:    	
+                                                  27:    	MOV #0x00FF,w5
+                                                  28:    	
+                                                  29:        if:
+                                                  30:    	CP w0, w5
+                                                  31:    	BRA GTU, else
+                                                  32:    	
+                                                  33:    	MOV #0x0000,w0
+                                                  34:    	BRA endif
+                                                  35:    	
+                                                  36:        else: 
+                                                  37:        
+                                                  38:            NOP  
+                                                  39:        
+                                                  40:        endif:
+                                                  41:    	
+                                                  42:    return
+                                                  43:    .end
+                                                  44:        
+                                                  45:    */
+                                                  46:    
+                                                  47:    .text
+                                                  48:    .global _func
+                                                  49:        
+                                                  50:    _func:
+                                                  51:        
+                                                  52:    ; la funcion recibe parametros AN y D n=(AN-1)/D +1 suma= n(1+AN)/2
+                                                  53:        
+                                                  54:    	;MOV w0,REGAN
+                                                  55:    	;MOV w1, REGD
+                                                  56:    	
+                                                  57:    	
+000384  780100     MOV W0, W2                     58:    	MOV w0,w2
+000386  780181     MOV W1, W3                     59:    	MOV w1, w3
+000388  B10010     SUB #0x1, W0                   60:    	SUB #0x0001, w0
+                                                  61:    	
+00038A  090011     REPEAT #0x11                   62:    	REPEAT #17
+00038C  D88103     DIV.UW W2, W3                  63:    	DIV.U w2,w3 ;w0 almacena el cociente de la divison y w1 el resto
+00038E  B00010     ADD #0x1, W0                   64:    	ADD #0x0001, w0 ;wo posee n
+000390  780280     MOV W0, W5                     65:    	MOV w0,w5
+                                                  66:    	
+000392  B00012     ADD #0x1, W2                   67:    	ADD #0x0001, w2
+000394  B81300     MUL.UU W2, W0, W6              68:    	MUL.UU w2,w0,w6
+                                                  69:    	
+000396  200024     MOV #0x2, W4                   70:    	MOV #0x0002,w4
+000398  090011     REPEAT #0x11                   71:    	REPEAT #17
+00039A  D88304     DIV.UW W6, W4                  72:    	DIV.U w6, w4 ;w0 almacena el cociente de la divison y w1 el resto
+                                                  73:    	;suma w0 tiene el resultado de la suma
+                                                  74:    	
+00039C  200FF5     MOV #0xFF, W5                  75:    	MOV #0x00FF,w5
+                                                  76:    	
+                                                  77:    	
+00039E  E10005     CP.W W0, W5                    78:    if:     CP w0, w5         ; compara suma con 0xFF
+0003A0  3E0001     BRA GTU, 0x3A4                 79:    	BRA GTU, mayor    ; si suma > 0xFF salta a mayor
+                                                  80:    
+0003A2  370001     BRA 0x3A6                      81:    	BRA fin           ; si suma <= 0xFF terminar
+                                                  82:    
+                                                  83:    mayor:
+0003A4  EB0000     CLR W0                         84:    	CLR w0            ; clear del registro
+                                                  85:    
+                                                  86:    fin:
+0003A6  060000     RETURN                         87:    	return
+                                                  88:    	.end
+---  D:/MicroJaviJuan/P4/P4.X/esam.c  -------------------------------------------------------------------
+1:                 /* 
+2:                  * File:   esam.c
+3:                  * Author: JB
+4:                  *
+5:                  * Created on 24 de septiembre de 2025, 4:40
+6:                  */
+7:                 
+8:                 #include "config.h"
+9:                 #include <stdio.h>
+10:                #include <stdlib.h>
+11:                
+12:                int func(int AN,int D);
+13:                
+14:                int main(void) {
+000360  FA0002     LNK #0x2
+15:                    
+16:                    char res ;
+17:                    InicializarReloj() ;
+000362  07FFB5     RCALL InicializarReloj
+18:                    PORTB = 0x0FFF;
+000364  20FFF0     MOV #0xFFF, W0
+000366  881650     MOV W0, PORTB
+19:                    TRISB = 0x0FFF;
+000368  20FFF0     MOV #0xFFF, W0
+00036A  881640     MOV W0, TRISB
+20:                
+21:                    while(1) {
+22:                
+23:                        res = func(7, 2); //16
+00036C  200021     MOV #0x2, W1
+00036E  200070     MOV #0x7, W0
+000370  070009     RCALL .Letext0, .LFE0, _func
+000372  784F00     MOV.B W0, [W14]
+24:                        res = func(101, 20); //>255
+000374  200141     MOV #0x14, W1
+000376  200650     MOV #0x65, W0
+000378  070005     RCALL .Letext0, .LFE0, _func
+00037A  784F00     MOV.B W0, [W14]
+25:                        PORTB = res << 8;
+00037C  FB001E     SE [W14], W0
+00037E  DD0048     SL W0, #8, W0
+000380  881650     MOV W0, PORTB
+26:                        }
+000382  37FFF4     BRA .L2
+27:                return 0;
+28:                }
+---  D:/MicroJaviJuan/P4/P4.X/config.c  -----------------------------------------------------------------
+1:                 
+2:                 #include "config.h"
+3:                 
+4:                 // ----------------------------------------------------------------------------------
+5:                 // ----------------------------- BITS DE CONFIGURACION ------------------------------
+6:                 // ----------------------------------------------------------------------------------
+7:                 // 1. Eliminar el segmento de arranque flash
+8:                 // 2. Permitir la escritura del segmento de arranque flash
+9:                 //_FBS(BSS_NO_BOOT_CODE & BWRP_WRPROTECT_OFF);
+10:                #pragma config BWRP = WRPROTECT_OFF     // Boot Segment Write Protect (Boot Segment may be written)
+11:                #pragma config BSS = NO_FLASH           // Boot Segment Program Flash Code Protection (No Boot program Flash segment)
+12:                
+13:                // 1. No proteger la memoria de programa contra escritura
+14:                // 2. No proteger el cÛdigo
+15:                //_FGS(GWRP_OFF & GCP_OFF);
+16:                #pragma config GWRP = OFF               // General Code Segment Write Protect (User program memory is not write-protected)
+17:                #pragma config GSS = OFF               // General Segment Code Protection (High Security Code Protection is Enabled)
+18:                
+19:                // 1. Utilizar el oscilador interno (FRC) en el arranque
+20:                // 2. Arrancar directamente con el oscilador seleccionado
+21:                //FOSCSEL(FNOSC_FRC & IESO_OFF);
+22:                
+23:                #pragma config FNOSC = FRC              // Oscillator Mode (Internal Fast RC (FRC))
+24:                #pragma config IESO = OFF               // Two-speed Oscillator Start-Up Enable (Start up with user-selected oscillator)
+25:                
+26:                // 1. Permitir la conmutaciÛn del reloj y deshabilitar la monitorizaciÛn de fallos
+27:                // 2. Desactivar el oscilador primario
+28:                // 3. Utilizar el oscilador secundario como entrada y salida digital
+29:                // 4. Permitir m?ltiples remapeos de los pines
+30:                //_FOSC(FCKSM_CSECMD & POSCMD_NONE & OSCIOFNC_ON & IOL1WAY_OFF);
+31:                #pragma config POSCMD = NONE            // Primary Oscillator Source (Primary Oscillator Disabled)
+32:                #pragma config OSCIOFNC = ON            // OSC2 Pin Function (OSC2 pin has digital I/O function)
+33:                #pragma config FCKSM = CSECMD           // Clock Switching and Monitor (Clock switching is enabled, Fail-Safe Clock Monitor is disabled)
+34:                #pragma config IOL1WAY = OFF            // Multiple remaping is allowed
+35:                
+36:                // 1. Permitir la deshabilitaciÛn del watchdog timer
+37:                //    poniendo a 0 el bit SWDTEN del registro RCON
+38:                //_FWDT(FWDTEN_OFF);
+39:                #pragma config WDTPOST = PS32768        // Watchdog Timer Postscaler (1:32,768)
+40:                #pragma config WDTPRE = PR128           // WDT Prescaler (1:128)
+41:                #pragma config WINDIS = OFF             // Watchdog Timer Window (Watchdog Timer in Non-Window mode)
+42:                #pragma config FWDTEN = OFF             // Watchdog Timer Enable (Watchdog timer enabled/disabled by user software)
+43:                
+44:                
+45:                // 1. Esperar 128 ms y resetear el microcontrolador al enchufar la alimentaciÛn
+46:                // 2. Controlar los pines de PWM desde el registro PORT al arrancar
+47:                // 3. Los pines PWM high est·n activos a nivel alto
+48:                // 4. Los pines PWM low est·n activos a nivel alto
+49:                // 5. Utilizar los pines est·ndar (SDA1 y SCL1) para el I2C
+50:                //_FPOR(FPWRT_PWR128 & PWMPIN_ON & HPOL_ON & LPOL_ON & ALTI2C_OFF);
+51:                #pragma config FPWRT = PWR128     // POR Timer Value (128ms)
+52:                #pragma config PWMPIN = ON        // Controlar los pines de PWM desde el registro PORT al arrancar
+53:                #pragma config HPOL = ON          // Los pines PWM high est?n activos a nivel alto
+54:                #pragma config LPOL = ON          // Los pines PWM low est?n activos a nivel alto
+55:                #pragma config ALTI2C = OFF       // Utilizar los pines est?ndar (SDA1 y SCL1) para el I2C
+56:                
+57:                // 1. Programar y depurar a travÈs de los pines PGC1 y PGD1
+58:                // 2. Desactivar el interfaz para JTAG
+59:                //_FICD(ICS_PGD1 & JTAGEN_OFF);
+60:                #pragma config ICS = PGD1               // Comm Channel Select (Communicate on PGC3/EMUC3 and PGD3/EMUD3)
+61:                #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG is Disabled)
+62:                
+63:                // ----------------------------------------------------------------------------------
+64:                // ----------------------------------- FUNCIONES ------------------------------------
+65:                // ----------------------------------------------------------------------------------
+66:                
+67:                /* Nombre: InicializarReloj
+68:                 * Descripción: Inicializa el reloj interno FRC para que funcione con PLL.
+69:                 * Argumentos: Ninguno
+70:                 * Valor devuelto: Ninguno
+71:                 */
+72:                void InicializarReloj(void)
+73:                 {
+0002CE  FA0000     LNK #0x0
+74:                	// Configurar la frecuencia del oscilador FRC (FOSC), cuya frecuencia nominal
+75:                	// (Fin) son 7.37 MHz, para que el microprocesador opere a 40 MIPS (FCY)
+76:                	// FOSC = Fin * M/(N1*N2) 	FCY = FOSC/2
+77:                	// FOSC = 79.2275 MHz 		FCY = 39.61375 MHz
+78:                	CLKDIVbits.PLLPRE  =  0;	// Preescalado del PLL:   N1 = 2
+0002D0  803A21     MOV CLKDIV, W1
+0002D2  2FFE00     MOV #0xFFE0, W0
+0002D4  608000     AND W1, W0, W0
+0002D6  883A20     MOV W0, CLKDIV
+79:                	PLLFBD             = 41; 	// Multiplicador del PLL: M = PLLFBD + 2 = 43
+0002D8  200290     MOV #0x29, W0
+0002DA  883A30     MOV W0, PLLFBD
+80:                	CLKDIVbits.PLLPOST =  0; 	// Postescalado del PLL:  N2 = 2
+0002DC  803A21     MOV CLKDIV, W1
+0002DE  2FF3F0     MOV #0xFF3F, W0
+0002E0  608000     AND W1, W0, W0
+0002E2  883A20     MOV W0, CLKDIV
+81:                	
+82:                	// Si hiciese falta llegar hasta las 40 MIPS de forma exacta, se podría hacer un
+83:                	// ajuste fino de la frecuencia del reloj usando OSCTUN para incrementar o
+84:                	// decrementar la frecuencia a razón de OSCTUN * 30 kHz.
+85:                	// IMPORTANTE: Esta característica ha sido implementada para corregir derivas
+86:                	// producidas a causa de la temperatura y no está garantizado que los incrementos
+87:                	// sean de 30 kHz
+88:                	/*
+89:                		OSCTUN 			   = 21; 	// Fin = 7.37 MHz + OSCTUN * 30 kHz = 8 MHz
+90:                		CLKDIVbits.PLLPRE  =  0; 	// Preescalado del PLL:   N1 = 2
+91:                		PLLFBD 			   = 40;	// Multiplicador del PLL: M = PLLFBD + 2 = 43
+92:                		CLKDIVbits.PLLPOST =  0; 	// Postescalado del PLL:  N2 = 2
+93:                	*/
+94:                	
+95:                	// Funciones para desbloquear la escritura del registro OSCCON
+96:                	__builtin_write_OSCCONH(0x01);			// Nuevo reloj: FRC w/ PLL
+0002E4  200012     MOV #0x1, W2
+0002E6  200780     MOV #0x78, W0
+0002E8  2009A1     MOV #0x9A, W1
+0002EA  207433     MOV #0x743, W3
+0002EC  784980     MOV.B W0, [W3]
+0002EE  784981     MOV.B W1, [W3]
+0002F0  784982     MOV.B W2, [W3]
+97:                	__builtin_write_OSCCONL(OSCCON | 0x01);	// Iniciar el cambio de reloj
+0002F2  803A10     MOV OSCCON, W0
+0002F4  780100     MOV W0, W2
+0002F6  A00002     BSET W2, #0
+0002F8  200460     MOV #0x46, W0
+0002FA  200571     MOV #0x57, W1
+0002FC  207423     MOV #0x742, W3
+0002FE  784980     MOV.B W0, [W3]
+000300  784981     MOV.B W1, [W3]
+000302  784982     MOV.B W2, [W3]
+98:                
+99:                	while (OSCCONbits.COSC != 1);	// Esperar a que se produzca el cambio de reloj	
+000304  000000     NOP
+000306  803A11     MOV OSCCON, W1
+000308  270000     MOV #0x7000, W0
+00030A  608080     AND W1, W0, W1
+00030C  210000     MOV #0x1000, W0
+00030E  508F80     SUB W1, W0, [W15]
+000310  3AFFFA     BRA NZ, .L2
+100:               	while (OSCCONbits.LOCK != 1);	// Esperar a que se sincronice el PLL
+000312  000000     NOP
+000314  803A11     MOV OSCCON, W1
+000316  200200     MOV #0x20, W0
+000318  608000     AND W1, W0, W0
+00031A  E00000     CP0 W0
+00031C  32FFFB     BRA Z, .L3
+101:               }
+00031E  FA8000     ULNK
+000320  060000     RETURN
+102:               
+103:               /* Nombre: RemapeaPerifericos
+104:                * Descripci—n: Situa en los pines adecuados los perifŽricos del micro
+105:                * Argumentos: Ninguno
+106:                * Valor devuelto: Ninguno
+107:                */
+108:               void RemapeaPerifericos(void)
+109:                {
+000322  FA0000     LNK #0x0
+110:               
+111:               	// Funciones para desbloquear la escritura del registro OSCCON
+112:               	__builtin_write_OSCCONL(OSCCON & 0xBF);	// Desbloquea el PPS
+000324  803A11     MOV OSCCON, W1
+000326  200BF0     MOV #0xBF, W0
+000328  608100     AND W1, W0, W2
+00032A  200460     MOV #0x46, W0
+00032C  200571     MOV #0x57, W1
+00032E  207423     MOV #0x742, W3
+000330  784980     MOV.B W0, [W3]
+000332  784981     MOV.B W1, [W3]
+000334  784982     MOV.B W2, [W3]
+113:               
+114:                       RPINR18bits.U1RXR = 5; // Asigna U1RX al pin 14 que es RP5
+000336  803521     MOV RPINR18, W1
+000338  2FFE00     MOV #0xFFE0, W0
+00033A  608000     AND W1, W0, W0
+00033C  B30050     IOR #0x5, W0
+00033E  883520     MOV W0, RPINR18
+115:                       RPOR2bits.RP4R = 3; // Asignar U1TX al pin 11 que es RP4
+000340  803621     MOV RPOR2, W1
+000342  2FFE00     MOV #0xFFE0, W0
+000344  608000     AND W1, W0, W0
+000346  B30030     IOR #0x3, W0
+000348  883620     MOV W0, RPOR2
+116:               
+117:                       __builtin_write_OSCCONL(OSCCON | 0x040); // Bloquea los PPS
+00034A  803A10     MOV OSCCON, W0
+00034C  780100     MOV W0, W2
+00034E  A06002     BSET W2, #6
+000350  200460     MOV #0x46, W0
+000352  200571     MOV #0x57, W1
+000354  207423     MOV #0x742, W3
+000356  784980     MOV.B W0, [W3]
+000358  784981     MOV.B W1, [W3]
+00035A  784982     MOV.B W2, [W3]
+118:               
+119:               }
+00035C  FA8000     ULNK
+00035E  060000     RETURN
