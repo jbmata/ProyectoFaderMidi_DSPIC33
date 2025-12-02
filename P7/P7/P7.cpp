@@ -1,8 +1,5 @@
 ﻿
 #include <iostream>
-#include <vector>
-#include <thread>
-#include <chrono>
 #include "Canal.h"
 #include "serial.h"
 #include "MidiUartLib.h"
@@ -124,11 +121,6 @@ int main()
 				}
 			}
 		}
-		else {
-			
-			this_thread::sleep_for(chrono::milliseconds(1));
-		}
-
 		
 		if (canalactual != canalant) {
 
