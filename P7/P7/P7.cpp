@@ -34,9 +34,8 @@ void setinicio()
 	for (int i = 0; i < numerocanales; ++i) {
 		canales[i].setValue(0);
 		midi.sendCC(
-			static_cast<BYTE>(canales[i].getCcNumber()),
-			static_cast<BYTE>(canales[i].getValue())
-		);
+			(BYTE)canales[i].getCcNumber(),
+			(BYTE)canales[i].getValue());
 	}
 }
 
@@ -89,7 +88,7 @@ int main()
 
 		if (resultado > 0) {
 
-			int dato = static_cast<int>(buffer[0]);
+			int dato = (int)(buffer[0]);
 
 			// ----------------- Byte de canal -----------------
 			if ((dato & 0x80) == 0) {
@@ -110,14 +109,11 @@ int main()
 
 					canales[idprimo].setValue(valor);
 
-					port.PortWrite(
-						static_cast<unsigned char>(canales[idprimo].getValue())
-					);
+					port.PortWrite((unsigned char)(canales[idprimo].getValue()));
 
 					midi.sendCC(
-						static_cast<BYTE>(canales[idprimo].getCcNumber()),
-						static_cast<BYTE>(canales[idprimo].getValue())
-					);
+						(BYTE)canales[idprimo].getCcNumber(),
+						(BYTE)canales[idprimo].getValue());
 				}
 			}
 		}
@@ -129,13 +125,12 @@ int main()
 				int idprimo = canalactual - 1;
 				int val = canales[idprimo].getValue();
 
-				port.PortWrite(static_cast<unsigned char>(val));
+				port.PortWrite((unsigned char)val);
 
 				
 				midi.sendCC(
-					static_cast<BYTE>(canales[idprimo].getCcNumber()),
-					static_cast<BYTE>(val)
-				);
+					(BYTE)canales[idprimo].getCcNumber(),
+					(BYTE)val);
 			}
 		}
 	}
