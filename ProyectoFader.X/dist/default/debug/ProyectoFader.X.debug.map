@@ -4,11 +4,11 @@ Tool Name:
   c:\program files\microchip\xc16\v2.10\bin\bin\..\bin/elf-ld.exe
 
 Command:
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000024f0.00 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000024f0.01 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000024f0.02 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000024f0.03 \
-  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp000024f0.04 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00005264.00 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00005264.01 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00005264.02 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00005264.03 \
+  -TC:\\Users\\info\\AppData\\Local\\Temp\\tmp00005264.04 \
   -p33FJ32MC202 \
   -o \
   dist/default/debug/ProyectoFader.X.debug.elf \
@@ -95,10 +95,10 @@ Default Scalar Model: Small
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x1c4           0x2a6  (678)
-.text                        0x3c4               0x492           0x6db  (1755)
-.dinit                       0x856                0x36            0x51  (81)
+.text                        0x3c4               0x4a2           0x6f3  (1779)
+.dinit                       0x866                0x36            0x51  (81)
 
-                 Total "program" memory used (bytes):          0x9d2  (2514) 7%
+                 Total "program" memory used (bytes):          0x9ea  (2538) 7%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x800]
@@ -188,39 +188,39 @@ External Symbols in Program Memory (by address):
                   0x0003be                  __DefaultInterrupt
                   0x0003c4                  _escribe
                   0x0003ea                  _main
-                  0x0004cc                  _InicializarUART
-                  0x000518                  _PonerEnColaTransmisionUART
-                  0x00053a                  _SacarDeColaTransmisionUART
-                  0x00055c                  _PonerEnColaRecepcionUART
-                  0x00057e                  _SacarDeColaRecepcionUART
-                  0x0005a0                  _Transmite
-                  0x0005a8                  _HayAlgoRecibido
-                  0x0005bc                  _CalculaPos
-                  0x000680                  _InicializarReloj
-                  0x0006d4                  _RemapeaPerifericos
-                  0x000712                  _setbotones
-                  0x000730                  _leerbotones
-                  0x000794                  _init_pwmMotor
-                  0x0007b0                  _setPwmMotor
-                  0x0007de                  _init_ad
-                  0x000818                  _get_ad
-                  0x000820                  _init_pwm
-                  0x000848                  _muestreo
+                  0x0004dc                  _InicializarUART
+                  0x000528                  _PonerEnColaTransmisionUART
+                  0x00054a                  _SacarDeColaTransmisionUART
+                  0x00056c                  _PonerEnColaRecepcionUART
+                  0x00058e                  _SacarDeColaRecepcionUART
+                  0x0005b0                  _Transmite
+                  0x0005b8                  _HayAlgoRecibido
+                  0x0005cc                  _CalculaPos
+                  0x000690                  _InicializarReloj
+                  0x0006e4                  _RemapeaPerifericos
+                  0x000722                  _setbotones
+                  0x000740                  _leerbotones
+                  0x0007a4                  _init_pwmMotor
+                  0x0007c0                  _setPwmMotor
+                  0x0007ee                  _init_ad
+                  0x000828                  _get_ad
+                  0x000830                  _init_pwm
+                  0x000858                  _muestreo
                   0xf80000                  __FBS.sec
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
 
-                  0x0005bc                  _CalculaPos
-                  0x0005a8                  _HayAlgoRecibido
-                  0x000680                  _InicializarReloj
-                  0x0004cc                  _InicializarUART
-                  0x00055c                  _PonerEnColaRecepcionUART
-                  0x000518                  _PonerEnColaTransmisionUART
-                  0x0006d4                  _RemapeaPerifericos
-                  0x00057e                  _SacarDeColaRecepcionUART
-                  0x00053a                  _SacarDeColaTransmisionUART
-                  0x0005a0                  _Transmite
+                  0x0005cc                  _CalculaPos
+                  0x0005b8                  _HayAlgoRecibido
+                  0x000690                  _InicializarReloj
+                  0x0004dc                  _InicializarUART
+                  0x00056c                  _PonerEnColaRecepcionUART
+                  0x000528                  _PonerEnColaTransmisionUART
+                  0x0006e4                  _RemapeaPerifericos
+                  0x00058e                  _SacarDeColaRecepcionUART
+                  0x00054a                  _SacarDeColaTransmisionUART
+                  0x0005b0                  _Transmite
                   0x000324                  __ADC1Interrupt
                   0x0003be                  __DefaultInterrupt
                   0xf80000                  __FBS.sec
@@ -234,15 +234,15 @@ External Symbols in Program Memory (by name):
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
                   0x0003c4                  _escribe
-                  0x000818                  _get_ad
-                  0x0007de                  _init_ad
-                  0x000820                  _init_pwm
-                  0x000794                  _init_pwmMotor
-                  0x000730                  _leerbotones
+                  0x000828                  _get_ad
+                  0x0007ee                  _init_ad
+                  0x000830                  _init_pwm
+                  0x0007a4                  _init_pwmMotor
+                  0x000740                  _leerbotones
                   0x0003ea                  _main
-                  0x000848                  _muestreo
-                  0x0007b0                  _setPwmMotor
-                  0x000712                  _setbotones
+                  0x000858                  _muestreo
+                  0x0007c0                  _setPwmMotor
+                  0x000722                  _setbotones
 
 Memory Configuration
 
@@ -371,12 +371,12 @@ usercode
 
 __FBS             0xf80000          0x2
  *(__FBS.sec*)
- __FBS.sec        0xf80000          0x2 /CW/_FBS ˆE
+ __FBS.sec        0xf80000          0x2 /CW/_FBSàGA
                   0xf80000                  __FBS.sec
 
 __FGS             0xf80004          0x2
  *(__FGS.sec*)
- __FGS.sec        0xf80004          0x2 /CW/_FGSðWE
+ __FGS.sec        0xf80004          0x2 /CW/_FGSxA
                   0xf80004                  __FGS.sec
 
 __FOSCSEL
@@ -409,39 +409,39 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x2ffb
+.debug_info       0x000000       0x3001
  *(.debug_info)
  .debug_info      0x000000        0x87b build/default/debug/config.o
- .debug_info      0x00087b        0x2e7 build/default/debug/main.o
- .debug_info      0x000b62        0x424 build/default/debug/pwmled.o
- .debug_info      0x000f86        0xd53 build/default/debug/uart.o
- .debug_info      0x001cd9        0x823 build/default/debug/ad.o
- .debug_info      0x0024fc        0x595 build/default/debug/pwmMotor.o
- .debug_info      0x002a91        0x282 build/default/debug/Control.o
- .debug_info      0x002d13        0x2e8 build/default/debug/botones.o
+ .debug_info      0x00087b        0x2ed build/default/debug/main.o
+ .debug_info      0x000b68        0x424 build/default/debug/pwmled.o
+ .debug_info      0x000f8c        0xd53 build/default/debug/uart.o
+ .debug_info      0x001cdf        0x823 build/default/debug/ad.o
+ .debug_info      0x002502        0x595 build/default/debug/pwmMotor.o
+ .debug_info      0x002a97        0x282 build/default/debug/Control.o
+ .debug_info      0x002d19        0x2e8 build/default/debug/botones.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x727
+.debug_abbrev     0x000000        0x71a
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xc5 build/default/debug/config.o
- .debug_abbrev    0x0000c5         0xb5 build/default/debug/main.o
- .debug_abbrev    0x00017a         0xe5 build/default/debug/pwmled.o
- .debug_abbrev    0x00025f        0x162 build/default/debug/uart.o
- .debug_abbrev    0x0003c1        0x122 build/default/debug/ad.o
- .debug_abbrev    0x0004e3         0xf6 build/default/debug/pwmMotor.o
- .debug_abbrev    0x0005d9         0x9a build/default/debug/Control.o
- .debug_abbrev    0x000673         0xb4 build/default/debug/botones.o
+ .debug_abbrev    0x0000c5         0xa8 build/default/debug/main.o
+ .debug_abbrev    0x00016d         0xe5 build/default/debug/pwmled.o
+ .debug_abbrev    0x000252        0x162 build/default/debug/uart.o
+ .debug_abbrev    0x0003b4        0x122 build/default/debug/ad.o
+ .debug_abbrev    0x0004d6         0xf6 build/default/debug/pwmMotor.o
+ .debug_abbrev    0x0005cc         0x9a build/default/debug/Control.o
+ .debug_abbrev    0x000666         0xb4 build/default/debug/botones.o
 
-.debug_line       0x000000        0x786
+.debug_line       0x000000        0x77b
  *(.debug_line)
  .debug_line      0x000000         0xf1 build/default/debug/config.o
- .debug_line      0x0000f1        0x122 build/default/debug/main.o
- .debug_line      0x000213         0xfc build/default/debug/pwmled.o
- .debug_line      0x00030f        0x125 build/default/debug/uart.o
- .debug_line      0x000434         0xfa build/default/debug/ad.o
- .debug_line      0x00052e        0x113 build/default/debug/pwmMotor.o
- .debug_line      0x000641         0x52 build/default/debug/Control.o
- .debug_line      0x000693         0xf3 build/default/debug/botones.o
+ .debug_line      0x0000f1        0x117 build/default/debug/main.o
+ .debug_line      0x000208         0xfc build/default/debug/pwmled.o
+ .debug_line      0x000304        0x125 build/default/debug/uart.o
+ .debug_line      0x000429         0xfa build/default/debug/ad.o
+ .debug_line      0x000523        0x113 build/default/debug/pwmMotor.o
+ .debug_line      0x000636         0x52 build/default/debug/Control.o
+ .debug_line      0x000688         0xf3 build/default/debug/botones.o
 
 .debug_frame      0x000000        0x390
  *(.debug_frame)
@@ -1145,8 +1145,8 @@ LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libm-elf.a
 LOAD c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a
 END GROUP
 OUTPUT(dist/default/debug/ProyectoFader.X.debug.elf elf32-pic30)
-LOAD /CW/_FGSðWE
-LOAD /CW/_FBS ˆE
+LOAD /CW/_FGSxA
+LOAD /CW/_FBSàGA
 LOAD default_isr
 LOAD data_init
 
@@ -1267,35 +1267,35 @@ __c30_signature
  .ivt._T2Interrupt
                   0x000022          0x2 build/default/debug/pwmMotor.o
 
-.text             0x0003c4        0x492
- .text            0x0003c4        0x108 build/default/debug/main.o
+.text             0x0003c4        0x4a2
+ .text            0x0003c4        0x118 build/default/debug/main.o
                   0x0003c4                  _escribe
                   0x0003ea                  _main
- .text            0x0004cc         0xf0 build/default/debug/uart.o
-                  0x0004cc                  _InicializarUART
-                  0x000518                  _PonerEnColaTransmisionUART
-                  0x00053a                  _SacarDeColaTransmisionUART
-                  0x00055c                  _PonerEnColaRecepcionUART
-                  0x00057e                  _SacarDeColaRecepcionUART
-                  0x0005a0                  _Transmite
-                  0x0005a8                  _HayAlgoRecibido
- .text            0x0005bc         0xc4 build/default/debug/Control.o
-                  0x0005bc                  _CalculaPos
- .text            0x000680         0x92 build/default/debug/config.o
-                  0x000680                  _InicializarReloj
-                  0x0006d4                  _RemapeaPerifericos
- .text            0x000712         0x82 build/default/debug/botones.o
-                  0x000712                  _setbotones
-                  0x000730                  _leerbotones
- .text            0x000794         0x4a build/default/debug/pwmMotor.o
-                  0x000794                  _init_pwmMotor
-                  0x0007b0                  _setPwmMotor
- .text            0x0007de         0x42 build/default/debug/ad.o
-                  0x0007de                  _init_ad
-                  0x000818                  _get_ad
- .text            0x000820         0x36 build/default/debug/pwmled.o
-                  0x000820                  _init_pwm
-                  0x000848                  _muestreo
+ .text            0x0004dc         0xf0 build/default/debug/uart.o
+                  0x0004dc                  _InicializarUART
+                  0x000528                  _PonerEnColaTransmisionUART
+                  0x00054a                  _SacarDeColaTransmisionUART
+                  0x00056c                  _PonerEnColaRecepcionUART
+                  0x00058e                  _SacarDeColaRecepcionUART
+                  0x0005b0                  _Transmite
+                  0x0005b8                  _HayAlgoRecibido
+ .text            0x0005cc         0xc4 build/default/debug/Control.o
+                  0x0005cc                  _CalculaPos
+ .text            0x000690         0x92 build/default/debug/config.o
+                  0x000690                  _InicializarReloj
+                  0x0006e4                  _RemapeaPerifericos
+ .text            0x000722         0x82 build/default/debug/botones.o
+                  0x000722                  _setbotones
+                  0x000740                  _leerbotones
+ .text            0x0007a4         0x4a build/default/debug/pwmMotor.o
+                  0x0007a4                  _init_pwmMotor
+                  0x0007c0                  _setPwmMotor
+ .text            0x0007ee         0x42 build/default/debug/ad.o
+                  0x0007ee                  _init_ad
+                  0x000828                  _get_ad
+ .text            0x000830         0x36 build/default/debug/pwmled.o
+                  0x000830                  _init_pwm
+                  0x000858                  _muestreo
 
-.dinit            0x000856         0x36
- .dinit           0x000856         0x36 data_init
+.dinit            0x000866         0x36
+ .dinit           0x000866         0x36 data_init
