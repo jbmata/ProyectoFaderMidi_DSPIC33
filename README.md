@@ -1,49 +1,58 @@
+
 # Motorized Fader Controller — MIDI Automation System
 
-Este proyecto implementa un **fader motorizado de alta precisión**, controlado mediante un microcontrolador **dsPIC**, y conectado a un ordenador mediante **UART**.
-El software en C++ recibe los datos del fader, gestiona varios canales y los envía a un **puerto MIDI virtual** para permitir su uso en **programas de edición musical (DAWs)**.
+This project implements a **high-precision motorized fader**, controlled by a **dsPIC microcontroller** and connected to a computer via **UART**.
+A C++ application receives fader data, manages multiple channels, and sends MIDI messages to a **virtual MIDI port**, allowing seamless integration with **Digital Audio Workstations (DAWs)**.
 
-Compatible con:
+Compatible with:
 **Ableton Live · Cubase · Reaper · FL Studio · Logic Pro (via MIDI loopback)**
 
 ---
 
-## Características principales
+## Main Features
 
 ### Hardware
 
-* Fader físico de 100 mm con motor DC.
-* Control PI para posicionamiento suave y preciso.
-* Lectura de potenciómetro por ADC (10 bits → recorte a 7 bits MIDI).
-* Botonera integrada:
+* 100 mm physical fader with DC motor.
+* PI control loop for smooth and accurate positioning.
+* Potentiometer readout via ADC (10-bit → reduced to 7-bit MIDI resolution).
+* Integrated button panel:
 
-  * **UP** / **DOWN** → cambia de canal
-  * **EDIT** → modo edición / seguimiento
-* Envío de datos por **UART** ( 38400 baudios).
+  * **UP** / **DOWN** → switches between channels
+  * **EDIT** → edit / follow mode
+* Data transmission via **UART** (38400 baud).
 
+---
 
-## Protocolo de comunicación UART
+## UART Communication Protocol
 
-El dsPIC envía bytes con este formato:
+The dsPIC sends bytes using the following structure:
 
-| Tipo  | Bit 7 | Bits 6..0 | Descripción            |
-| ----- | ----- | --------- | ---------------------- |
-| Canal | 0     | 0–127     | Cambia el fader activo |
-| Valor | 1     | 0–127     | Posición del fader     |
+| Type    | Bit 7 | Bits 6..0 | Description                      |
+| ------- | ----- | --------- | -------------------------------- |
+| Channel | 0     | 0–127     | Selects the active fader channel |
+| Value   | 1     | 0–127     | Current fader position           |
 
-### El PC
+---
 
-* actualiza el canal actual
-* guarda el valor en un vector de faders
-* envía **CC** al puerto MIDI virtual
-* reenvía el valor al dsPIC cuando cambia el canal
+## The PC Software
 
-###  Windows
+The C++ program:
 
-* **loopMIDI**
-  [https://www.tobias-erichsen.de/software/loopmidi.html](https://www.tobias-erichsen.de/software/loopmidi.html)
+* updates the currently selected channel
+* stores the fader position in an internal array
+* sends **MIDI CC** messages to a virtual MIDI port
+* sends the stored value back to the dsPIC when the user switches channels
 
-### Linux / Mac
+---
 
-Funciona igual, sustituyendo loopMIDI por ALSA o IAC Driver.
+## MIDI Routing
 
+### Windows
+
+Use **loopMIDI**:
+[https://www.tobias-erichsen.de/software/loopmidi.html](https://www.tobias-erichsen.de/software/loopmidi.html)
+
+### Linux / macOS
+
+Works similarly using ALSA loopback devices (Linux) or the macOS **IAC Driver**.
